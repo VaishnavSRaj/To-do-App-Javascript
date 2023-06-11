@@ -14,6 +14,8 @@ function addTask() {
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
 
+    li.classList.add("task");
+
     const span = document.createElement("span");
 
     // Create the edit logo
@@ -37,6 +39,8 @@ function addTask() {
       const parent = span.parentElement;
       console.log(parent);
       parent.parentElement.removeChild(parent);
+      editButton.disabled = true; // Disable the edit button
+      editButton.classList.add("disabled"); // Add the "disabled" class
       saveData();
     });
 
@@ -59,13 +63,16 @@ inputBox.addEventListener("keyup", (e) => {
   }
 });
 
-//check todo list and disble edit button
+//check todo list and disable edit button
 listContainer.addEventListener("click", (e) => {
   const target = e.target;
   if (target.tagName === "LI") {
     target.classList.toggle("checked");
     const editButton = target.querySelector("#edit-button");
     editButton.disabled = !editButton.disabled;
+    editButton.style.cursor = target.classList.contains("checked")
+      ? "not-allowed"
+      : "pointer";
     saveData();
   } else {
     return;
