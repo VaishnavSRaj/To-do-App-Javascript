@@ -39,8 +39,8 @@ function addTask() {
       const parent = span.parentElement;
       console.log(parent);
       parent.parentElement.removeChild(parent);
-      editButton.disabled = true; // Disable the edit button
-      editButton.classList.add("disabled"); // Add the "disabled" class
+      editButton.disabled = true; 
+      editButton.classList.add("disabled");
       saveData();
     });
 
@@ -55,7 +55,7 @@ function addTask() {
   saveData();
 }
 
-//Enter to add todo list
+//Enter to add todo list.
 inputBox.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     e.preventDefault();
